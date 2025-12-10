@@ -1,0 +1,9 @@
+---
+title: "My Python Package!"
+---
+
+Here is a website all about my package.
+
+Documentation [here](Documentation.qmd)
+
+Get started [here](Tutorial.qmd)
