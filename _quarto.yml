@@ -1,0 +1,21 @@
+project: 
+  type: website
+  output-dir: docs
+
+website:
+  title: "My Python Package!"
+  navbar:
+    left:
+      - text: Documentation
+        href: Documentation.qmd
+      - text: Tutorial
+        href: Tutorial.qmd
+      - href: index.qmd
+        text: Home
+    
+format: 
+  html: 
+    theme:
+      light: cosmo
+      dark: cyborg
+    toc: true
