@@ -59,21 +59,30 @@ ax.set_ylabel(ylabel)
 plt.xticks(rotation=45)
 st.pyplot(fig)
 
+# Ensure correct ordering
+df = df.sort_values(["Symbol", "Date"])
+
+# Derived weekly % increase from adjusted close
+df["Weekly_Pct_Increase"] = (
+    df.groupby("Symbol")["adjusted close"]
+      .pct_change()
+)
+
 # Compute summary statistics
 performance = df.groupby('Symbol')['Pct_Change'].last().sort_values(ascending=False)
 volatility = df.groupby('Symbol')['Close_diff'].std().sort_values(ascending=False)
-mean_diff = df.groupby('Symbol')['Close_diff'].mean().sort_values(ascending=False)
+avg_weekly_pct = df.groupby('Symbol')['Weekly_Pct_Increase'].mean().sort_values(ascending=False)
 
 # Apply top_n filter
 performance_top = performance.head(top_n)
 volatility_top = volatility.head(top_n)
-mean_diff_top = mean_diff.head(top_n)
+avg_weekly_pct_top = avg_weekly_pct.head(top_n)
 
 # Show selected table
 st.header("📈 Stock Summary Table")
 if selected_table == "Performance":
-    st.dataframe(performance_top.rename("Pct_Change"))
+    st.dataframe(performance_top.rename("Most Recent % Change"))
 elif selected_table == "Volatility":
-    st.dataframe(volatility_top.rename("Std of Close Differences"))
+    st.dataframe(volatility_top.rename("Std of Weekly Price Changes"))
 else:
-    st.dataframe(mean_diff_top.rename("Mean Weekly Diff"))
+    st.dataframe((avg_weekly_pct_top * 100).round(2).rename("Avg Weekly % Increase"))
