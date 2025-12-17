@@ -1,6 +1,6 @@
 import argparse
 import pandas as pd
-from alphapackage.clean import clean_prices
+from stat386stonks import clean_prices
 
 def main():
     p = argparse.ArgumentParser()
@@ -11,7 +11,6 @@ def main():
     df = pd.read_csv(args.infile)
     df_clean = clean_prices(df)
     df_clean.to_csv(args.outfile, index=False)
-    print(f"Wrote cleaned data to {args.outfile}")
 
 if __name__ == "__main__":
     main()
