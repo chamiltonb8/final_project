@@ -1,10 +1,144 @@
 ---
-title: "Tutorial"
+title: "Tutorial: How to use the stat386stonks Package"
 ---
 
-```{python3}
-from src import *
+## 1. Install the Package
 
-run_cleaning_pipeline()
-run_analysis_pipeline()
+the package is installable directly from GitHub.
+
+```{bash}
+pip install git+https://github.com/chamiltonb8/final_project.git
+```
+
+After installing the package confirm that it works 
+
+```{python}
+import stat386stonks
+```
+
+## 2. API Key setup (required for data collection)
+
+1. obtain a free api key from the [AlphaVantage Website](https://www.alphavantage.co/documentation/)
+2. create a `.env` file in your root directory and list it in a `.gitignore` file. Make sure that the call to the API in the .env file looks like this:
+
+```{python}
+# Replace "your_key_here with your actual key"
+ALPHAVANTAGE_API_KEY=your_key_here
+```
+
+3. This package automatically adds this key using the python-dotenv library
+
+## 3. Collecting Stock Data
+
+All Stock Data is collected using the `fetch_weekly_adjusted()` function. It's implementation looks like this:
+
+```{python}
+# Import the Library and function
+from stat386stonks import fetch_weekly_adjusted
+
+# Select the Symbols you want to use from the list you can edit it to use any ticker that you would like as long as you know the symbol and AlphaVangtage contains it. We'll use those listed in the list object. 
+symbols = ["AAPL", "MSFT", "SPY", "TSLA", "GOOGL", "AMZN", "META"]
+
+# Create a new dataframe that allows you to explore and analyze the stock data
+df_raw = fetch_weekly_adjusted(symbols)
+
+df_raw.head()
+```
+
+The code above returns a DataFrame containing weekly adjusted stock data for each selected symbol.
+
+For reproduceability, we recommend that you save the raw data:
+
+```{python}
+df_raw.to_csv("data/weekly_5yr_all_symbols.csv", index=False)
+```
+
+## 4. Cleaning and Preparing the Data
+
+As with all data, the raw data needs cleaning before it can be used. The Package provides a function that makes this step easier than if it was done by hand and allows for two options:
+
+### Option A - In Python
+
+```{python}
+import pandas as pd
+from stat386stonks import clean_prices
+
+df_raw = pd.read_csv("data/weekly_5yr_all_symbols.csv")
+df_clean = clean_prices(df_raw)
+
+df_clean.head()
+```
+
+### Option B - In Bash/Terminal
+
+```{bash}
+./.venv/bin/python scripts/clean_prices.py \
+  --infile data/weekly_5yr_all_symbols.csv \
+  --outfile data/clean_weekly_stock_data.csv
+```
+
+## 5. Feature Engineering 
+
+The cleaning step creates additional variables automatically that can help in future analysis. 
+
+* **Close_diff**: Week-to-week change in closing price for each stock.
+* **Pct_Change**: Percent change in adjusted close price relative to the first observation for each stock.
+
+These features allow comparisons across stocks and enable volatility and performance analysis.
+
+## 6. Analysis and Modeling
+
+This Package Includes a modeling function to explore simple patterns in the stock data and can potentially aid in predicing future returns. 
+
+```{python}
+import pandas as pd
+from stat386stonks import fit_next_return_models
+
+df = pd.read_csv("data/clean_weekly_stock_data.csv")
+results = fit_next_return_models(df)
+
+results
+```
+
+This function fits time-based linear regression models for each stock and returns model coefficients and performance metrics.
+
+## 7. Visualization 
+
+The package provides several visualization utilities for exploratory analysis.
+
+Here is how to implement each one:
+
+### Plot Adjusted Closing Prices
+
+```{python}
+from stat386stonks import plot_closing_prices
+
+plot_closing_prices(df)
+```
+
+### Plot percent change over time 
+
+```{python}
+from stat386stonks import plot_all_pct_change
+
+plot_all_pct_change(df)
+```
+
+### Compare two stocks
+
+```{python}
+from stat386stonks import compare_two
+
+compare_two("AAPL", "SPY", df)
+```
+
+### New plot
+
+## 8. Streamlit Dashboard
+
+An interactive Streamlit application is included in the project. The app imports the stat386stonks package to display interactive plots and summary tables. There is also a link to it [here]()
+
+To run the app locally:
+```{bash}
+streamlit run streamlit_app.py
 ```
