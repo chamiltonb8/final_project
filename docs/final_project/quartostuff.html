@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>My Python Package!</title>
+<title>quartostuff – My Python Package!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,66 +20,31 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-de0ed3b9a49d5daa615839eefb10c6a7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-de0ed3b9a49d5daa615839eefb10c6a7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -280,9 +245,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">My Python Package!</span>
     </a>
   </div>
@@ -293,15 +258,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./Documentation.html"> 
+    <a class="nav-link" href="../Documentation.html"> 
 <span class="menu-text">Documentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Tutorial.html"> 
+    <a class="nav-link" href="../Tutorial.html"> 
 <span class="menu-text">Tutorial</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
 </ul>
@@ -321,26 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a>
-  <ul class="collapse">
-  <li><a href="#fetch_weekly_adjustedsymbols" id="toc-fetch_weekly_adjustedsymbols" class="nav-link" data-scroll-target="#fetch_weekly_adjustedsymbols"><code>fetch_weekly_adjusted(symbols)</code></a></li>
-  </ul></li>
-  <li><a href="#cleaning-and-feature-engineering" id="toc-cleaning-and-feature-engineering" class="nav-link" data-scroll-target="#cleaning-and-feature-engineering">Cleaning and Feature Engineering</a>
-  <ul class="collapse">
-  <li><a href="#clean_pricesdf" id="toc-clean_pricesdf" class="nav-link" data-scroll-target="#clean_pricesdf"><code>clean_prices(df)</code></a></li>
-  </ul></li>
-  <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling">Modeling</a>
-  <ul class="collapse">
-  <li><a href="#fit_next_return_modelsdf" id="toc-fit_next_return_modelsdf" class="nav-link" data-scroll-target="#fit_next_return_modelsdf"><code>fit_next_return_models(df)</code></a></li>
-  </ul></li>
-  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a>
-  <ul class="collapse">
-  <li><a href="#plot_closing_pricesdf" id="toc-plot_closing_pricesdf" class="nav-link" data-scroll-target="#plot_closing_pricesdf"><code>plot_closing_prices(df)</code></a></li>
-  <li><a href="#plot_all_pct_changedf" id="toc-plot_all_pct_changedf" class="nav-link" data-scroll-target="#plot_all_pct_changedf"><code>plot_all_pct_change(df)</code></a></li>
-  <li><a href="#compare_twostock1-stock2-df" id="toc-compare_twostock1-stock2-df" class="nav-link" data-scroll-target="#compare_twostock1-stock2-df"><code>compare_two(stock1, stock2, df)</code></a></li>
-  </ul></li>
-  <li><a href="#notes-for-streamlit-integration" id="toc-notes-for-streamlit-integration" class="nav-link" data-scroll-target="#notes-for-streamlit-integration">Notes for Streamlit Integration</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
   </ul>
 </nav>
     </div>
@@ -350,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Python Package!</h1>
+<h1 class="title">quartostuff</h1>
 </div>
 
 
@@ -367,140 +313,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Documentation <a href="./Documentation.html">here</a></p>
-<p>Get started <a href="./Tutorial.html">here</a></p>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This page documents the main public functions in the <code>stat386stonks</code> package, including what each function does, its inputs, and what it returns. These functions are designed to support a reproducible workflow for collecting, cleaning, analyzing, modeling, and visualizing historical stock data.</p>
-<p>If you want the Documentation click <a href="./Documentation.html">here</a></p>
-<p>If you want the Tutorial click <a href="./Tutorial.html">here</a></p>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> Function behavior is described based on the project’s implementation. Where relevant, functions assume standard Alpha Vantage weekly adjusted time series fields (e.g., <code>open</code>, <code>close</code>, <code>adjusted close</code>, <code>volume</code>) and the cleaned dataset produced by <code>clean_prices()</code>.</p>
-</blockquote>
-<hr>
-</section>
-<section id="data-collection" class="level2">
-<h2 class="anchored" data-anchor-id="data-collection">Data Collection</h2>
-<section id="fetch_weekly_adjustedsymbols" class="level3">
-<h3 class="anchored" data-anchor-id="fetch_weekly_adjustedsymbols"><code>fetch_weekly_adjusted(symbols)</code></h3>
-<p><strong>Purpose</strong><br>
-Downloads weekly adjusted time series data for a list of stock ticker symbols from the Alpha Vantage API and returns a single combined DataFrame.</p>
-<p><strong>Where it lives</strong><br>
-<code>stat386stonks.read_data</code></p>
-<p><strong>Inputs</strong> - <code>symbols</code> <em>(list[str])</em>: A list of ticker symbols (e.g., <code>["AAPL", "MSFT", "SPY"]</code>).</p>
-<p><strong>What it does</strong> - Loads your Alpha Vantage API key from the environment (<code>ALPHAVANTAGE_API_KEY</code>), typically via a local <code>.env</code> file. - Calls the Alpha Vantage weekly adjusted endpoint for each symbol. - Builds a DataFrame for each symbol and concatenates results into one DataFrame (with a <code>Symbol</code> column). - Converts the date field to a proper datetime column and sorts by date.</p>
-<p><strong>Returns</strong> - <em>(pandas.DataFrame)</em>: Weekly stock data for all requested symbols, including a <code>Symbol</code> column and a <code>Date</code> column.</p>
-<p><strong>Example</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> fetch_weekly_adjusted</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>symbols <span class="op">=</span> [<span class="st">"AAPL"</span>, <span class="st">"MSFT"</span>, <span class="st">"SPY"</span>]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> fetch_weekly_adjusted(symbols)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df_raw.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-</section>
-<section id="cleaning-and-feature-engineering" class="level2">
-<h2 class="anchored" data-anchor-id="cleaning-and-feature-engineering">Cleaning and Feature Engineering</h2>
-<section id="clean_pricesdf" class="level3">
-<h3 class="anchored" data-anchor-id="clean_pricesdf"><code>clean_prices(df)</code></h3>
-<p><strong>Purpose</strong><br>
-Cleans raw Alpha Vantage output and creates engineered features used throughout the project.</p>
-<p><strong>Where it lives</strong><br>
-<code>stat386stonks.clean_data</code></p>
-<p><strong>Inputs</strong> - <code>df</code> <em>(pandas.DataFrame)</em>: Raw (or semi-raw) stock data. Typically created by <code>fetch_weekly_adjusted()</code> or read from a CSV export.</p>
-<p><strong>What it does</strong> - Standardizes column names (e.g., removes numeric prefixes like <code>1. open</code> → <code>open</code>). - Converts numeric columns to numeric types (prices, volume, dividend amount, etc.). - Ensures <code>Date</code> is parsed as datetime and the data is sorted by <code>Symbol</code> and <code>Date</code>. - Creates engineered features: - <code>Close_diff</code>: week-to-week difference in <code>close</code> (within each <code>Symbol</code>) - <code>Pct_Change</code>: percent change in <code>adjusted close</code> relative to the first observation (within each <code>Symbol</code>)</p>
-<p><strong>Returns</strong> - <em>(pandas.DataFrame)</em>: A cleaned DataFrame with engineered features included.</p>
-<p><strong>Example</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> clean_prices</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> pd.read_csv(<span class="st">"data/weekly_5yr_all_symbols.csv"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> clean_prices(df_raw)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df_clean[[<span class="st">"Symbol"</span>, <span class="st">"Date"</span>, <span class="st">"close"</span>, <span class="st">"Close_diff"</span>, <span class="st">"Pct_Change"</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-</section>
-<section id="modeling" class="level2">
-<h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
-<section id="fit_next_return_modelsdf" class="level3">
-<h3 class="anchored" data-anchor-id="fit_next_return_modelsdf"><code>fit_next_return_models(df)</code></h3>
-<p><strong>Purpose</strong><br>
-Fits per-stock linear regression models to predict next-period returns using simple signals from the current period.</p>
-<p><strong>Where it lives</strong><br>
-<code>stat386stonks.models</code></p>
-<p><strong>Inputs</strong> - <code>df</code> <em>(pandas.DataFrame)</em>: Cleaned stock data (ideally produced by <code>clean_prices()</code>), containing at least: - <code>Symbol</code> - <code>Date</code> - <code>adjusted close</code> - <code>volume</code></p>
-<p><strong>What it does</strong> - For each <code>Symbol</code>, computes: - <code>ret</code>: percent change of <code>adjusted close</code> - <code>next_ret</code>: <code>ret</code> shifted by -1 (the next period’s return) - <code>vol_change</code>: percent change of <code>volume</code> - Fits a <strong>time-based train/test split</strong> (no shuffling) to better reflect a forecasting scenario. - Trains a linear regression model: - <strong>Target:</strong> <code>next_ret</code> - <strong>Features:</strong> <code>ret</code> and <code>vol_change</code> - Computes evaluation metrics such as: - R² - Mean Squared Error (MSE) - Returns a compact summary table across symbols.</p>
-<p><strong>Returns</strong> - <em>(pandas.DataFrame)</em>: One row per symbol, typically including coefficients and metrics (e.g., <code>coef_ret</code>, <code>coef_vol_change</code>, <code>intercept</code>, <code>r2</code>, <code>mse</code>, <code>n_obs</code>).</p>
-<p><strong>Example</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> fit_next_return_models</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/clean_weekly_stock_data.csv"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> fit_next_return_models(df)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-</section>
-<section id="visualization" class="level2">
-<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
-<section id="plot_closing_pricesdf" class="level3">
-<h3 class="anchored" data-anchor-id="plot_closing_pricesdf"><code>plot_closing_prices(df)</code></h3>
-<p><strong>Purpose</strong><br>
-Plots adjusted closing prices over time for each stock symbol in the dataset.</p>
-<p><strong>Where it lives</strong><br>
-<code>stat386stonks.plots</code></p>
-<p><strong>Inputs</strong> - <code>df</code> <em>(pandas.DataFrame)</em>: Cleaned or raw stock data containing: - <code>Symbol</code> - <code>Date</code> - <code>adjusted close</code></p>
-<p><strong>What it does</strong> - Iterates over each symbol and produces a time-series line plot of <code>adjusted close</code> vs <code>Date</code>.</p>
-<p><strong>Returns</strong> - None (displays plots).</p>
-<p><strong>Example</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> plot_closing_prices</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/clean_weekly_stock_data.csv"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plot_closing_prices(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-<section id="plot_all_pct_changedf" class="level3">
-<h3 class="anchored" data-anchor-id="plot_all_pct_changedf"><code>plot_all_pct_change(df)</code></h3>
-<p><strong>Purpose</strong><br>
-Plots the percent change (<code>Pct_Change</code>) for all symbols on a single chart for easy comparison.</p>
-<p><strong>Where it lives</strong><br>
-<code>stat386stonks.plots</code></p>
-<p><strong>Inputs</strong> - <code>df</code> <em>(pandas.DataFrame)</em>: Cleaned stock data containing: - <code>Symbol</code> - <code>Date</code> - <code>Pct_Change</code></p>
-<p><strong>What it does</strong> - Plots each symbol’s <code>Pct_Change</code> vs <code>Date</code> on the same set of axes. - Useful for comparing growth trajectories across multiple stocks.</p>
-<p><strong>Returns</strong> - None (displays plot).</p>
-<p><strong>Example</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> plot_all_pct_change</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/clean_weekly_stock_data.csv"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plot_all_pct_change(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-<section id="compare_twostock1-stock2-df" class="level3">
-<h3 class="anchored" data-anchor-id="compare_twostock1-stock2-df"><code>compare_two(stock1, stock2, df)</code></h3>
-<p><strong>Purpose</strong><br>
-Creates side-by-side style comparison plots for two stocks: 1) adjusted close over time<br>
-2) percent change over time</p>
-<p><strong>Where it lives</strong><br>
-<code>stat386stonks.plots</code></p>
-<p><strong>Inputs</strong> - <code>stock1</code> <em>(str)</em>: First ticker symbol (e.g., <code>"AAPL"</code>). - <code>stock2</code> <em>(str)</em>: Second ticker symbol (e.g., <code>"SPY"</code>). - <code>df</code> <em>(pandas.DataFrame)</em>: Cleaned stock data containing: - <code>Symbol</code> - <code>Date</code> - <code>adjusted close</code> - <code>Pct_Change</code></p>
-<p><strong>What it does</strong> - Filters the dataset to the two requested symbols. - Plots: - <code>adjusted close</code> vs <code>Date</code> for both stocks - <code>Pct_Change</code> vs <code>Date</code> for both stocks</p>
-<p><strong>Returns</strong> - None (displays plots).</p>
-<p><strong>Example</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> compare_two</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/clean_weekly_stock_data.csv"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>compare_two(<span class="st">"AAPL"</span>, <span class="st">"SPY"</span>, df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-</section>
-<section id="notes-for-streamlit-integration" class="level2">
-<h2 class="anchored" data-anchor-id="notes-for-streamlit-integration">Notes for Streamlit Integration</h2>
-<p>The Streamlit dashboard can import these functions directly:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> clean_prices, fit_next_return_models</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>For interactive apps, it is common to: - load the cleaned CSV (fast) - cache the DataFrame in Streamlit (<code>@st.cache_data</code>) - compute summary tables using groupby operations (performance/volatility)</p>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
 
 
 </section>

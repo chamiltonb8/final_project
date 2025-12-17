@@ -1,12 +1,24 @@
 ---
 title: "Tutorial: How to use the stat386stonks Package"
+engine: python
+execute:
+  python: ./.venv/bin/python
 ---
+
+```{python}
+#| label: load_package_setup
+#| include: false
+import runpy
+
+runpy.run_path("scripts/quarto_setup.py")
+```
 
 ## 1. Install the Package
 
 the package is installable directly from GitHub.
 
 ```{bash}
+#| eval: false
 pip install git+https://github.com/chamiltonb8/final_project.git
 ```
 
@@ -22,6 +34,7 @@ import stat386stonks
 2. create a `.env` file in your root directory and list it in a `.gitignore` file. Make sure that the call to the API in the .env file looks like this:
 
 ```{python}
+#| eval: false
 # Replace "your_key_here with your actual key"
 ALPHAVANTAGE_API_KEY=your_key_here
 ```
@@ -33,6 +46,7 @@ ALPHAVANTAGE_API_KEY=your_key_here
 All Stock Data is collected using the `fetch_weekly_adjusted()` function. It's implementation looks like this:
 
 ```{python}
+#| eval: false
 # Import the Library and function
 from stat386stonks import fetch_weekly_adjusted
 
@@ -50,6 +64,7 @@ The code above returns a DataFrame containing weekly adjusted stock data for eac
 For reproduceability, we recommend that you save the raw data:
 
 ```{python}
+#| eval: false
 df_raw.to_csv("data/weekly_5yr_all_symbols.csv", index=False)
 ```
 
@@ -60,6 +75,7 @@ As with all data, the raw data needs cleaning before it can be used. The Package
 ### Option A - In Python
 
 ```{python}
+#| eval: false
 import pandas as pd
 from stat386stonks import clean_prices
 
@@ -72,6 +88,7 @@ df_clean.head()
 ### Option B - In Bash/Terminal
 
 ```{bash}
+#| eval: false
 ./.venv/bin/python scripts/clean_prices.py \
   --infile data/weekly_5yr_all_symbols.csv \
   --outfile data/clean_weekly_stock_data.csv
@@ -91,6 +108,7 @@ These features allow comparisons across stocks and enable volatility and perform
 This Package Includes a modeling function to explore simple patterns in the stock data and can potentially aid in predicing future returns. 
 
 ```{python}
+#| eval: false
 import pandas as pd
 from stat386stonks import fit_next_return_models
 
@@ -111,6 +129,7 @@ Here is how to implement each one:
 ### Plot Adjusted Closing Prices
 
 ```{python}
+#| eval: false
 from stat386stonks import plot_closing_prices
 
 plot_closing_prices(df)
@@ -119,6 +138,7 @@ plot_closing_prices(df)
 ### Plot percent change over time 
 
 ```{python}
+#| eval: false
 from stat386stonks import plot_all_pct_change
 
 plot_all_pct_change(df)
@@ -127,6 +147,7 @@ plot_all_pct_change(df)
 ### Compare two stocks
 
 ```{python}
+#| eval: false
 from stat386stonks import compare_two
 
 compare_two("AAPL", "SPY", df)
@@ -140,5 +161,6 @@ An interactive Streamlit application is included in the project. The app imports
 
 To run the app locally:
 ```{bash}
+#| eval: false
 streamlit run streamlit_app.py
 ```

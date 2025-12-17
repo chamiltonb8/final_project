@@ -8,7 +8,7 @@ name = "stat386stonks"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "dotenv>=0.9.9",
     "ipykernel>=7.1.0",

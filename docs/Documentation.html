@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Documentation – My Python Package!</title>
+<title>Documentation for the stat386stonks package – My Python Package!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,14 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3c87bd97f2d3ed8302ed67633272be33.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-de0ed3b9a49d5daa615839eefb10c6a7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -281,8 +281,26 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><strong>Introduction</strong></a></li>
+  <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link" data-scroll-target="#preparing-the-data"><strong>Preparing the Data</strong></a>
+  <ul class="collapse">
+  <li><a href="#acquiring-the-data" id="toc-acquiring-the-data" class="nav-link" data-scroll-target="#acquiring-the-data"><strong>Acquiring the Data</strong></a></li>
+  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data"><strong>Cleaning the Data</strong></a></li>
+  </ul></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><strong>Analysis</strong></a>
+  <ul class="collapse">
+  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting"><strong>Plotting</strong></a></li>
+  <li><a href="#summary-tables" id="toc-summary-tables" class="nav-link" data-scroll-target="#summary-tables"><strong>Summary Tables</strong></a></li>
+  </ul></li>
+  <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling"><strong>Modeling</strong></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><strong>Conclusion</strong></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -290,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Documentation</h1>
+<h1 class="title">Documentation for the stat386stonks package</h1>
 </div>
 
 
@@ -307,11 +325,64 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Here is how you use my package</p>
-<pre class="{python3}"><code>
-</code></pre>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h2>
+<p>We created this package so that people can analyze historical data from some of the most well-known stocks, compare them to each other, and use models to predict what stock prices may be in the future. Predicting the stock market is a dream for almost everyone involved in investing. Knowing the future would allow investors to make immense profits. Although the predictive models we added do not give exact predictions and can be wrong, they provide insight into what future stock prices may look like based on historical data. We want to disclose that these models are not perfect, and one should not carelessly invest in the stocks included in our package solely based on our models.</p>
+</section>
+<section id="preparing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-the-data"><strong>Preparing the Data</strong></h2>
+<section id="acquiring-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="acquiring-the-data"><strong>Acquiring the Data</strong></h3>
+<p>The dataset comes from the <strong>Alpha Vantage API</strong>, which provides publicly accessible financial market data, including historical and real-time prices for stocks, ETFs, cryptocurrencies, and forex. For this project, we only use historical stock prices. The data includes key information such as open, high, low, and close prices, trading volume, and adjusted close values for equities, along with metadata like the ticker symbol, time interval, and last refreshed date. The API allows data to be grouped by daily, weekly, or monthly intervals.</p>
+<p>Accessing the API requires creating a free Alpha Vantage account, and data collection is legal as long as it is not used for commercial purposes and rate limits are respected. Because the free API has usage limits, we collected data in two stages: first retrieving five years of weekly data for seven stocks and saving it to a CSV file, then modifying the code to retrieve the next five years of data and saving it to a separate CSV file. These two CSV files were then combined into a single dataset, which we used for data cleaning. We also chose to use weekly data instead of daily data in order to maximize the amount of historical data we could obtain within the API’s free limits while still capturing meaningful trends.</p>
+</section>
+<section id="cleaning-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="cleaning-the-data"><strong>Cleaning the Data</strong></h3>
+<p>Some data cleaning occurred during the process of combining the two CSV files. The column names originally contained numbers at the beginning, which we removed so that only the column names remained and were consistently capitalized. We also ensured that the data was sorted first by stock symbol and then by date so that time series plots would be accurate. Without this step, the graphs and analysis would not reflect the true trends in the data.</p>
+<p>We added two new variables using information from the API. The first was <em>Close_diff</em>, which groups the data by stock and computes the difference in adjusted closing price between the current week and the previous week. The adjusted closing price accounts for events such as stock splits, which occurred for some of the stocks in our dataset and would otherwise distort the analysis.</p>
+<p>The second variable we created was <em>Pct_Change</em>, which groups the data by stock and calculates the percent change in adjusted closing price relative to the first data point for that stock. This allows for better comparisons across stocks, as percent growth is more meaningful to investors than raw price levels.</p>
+</section>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis"><strong>Analysis</strong></h2>
+<section id="plotting" class="level3">
+<h3 class="anchored" data-anchor-id="plotting"><strong>Plotting</strong></h3>
+<p>When comparing adjusted closing prices across the stocks we analyzed, ordered from highest to lowest, the ranking is the <em>S&amp;P 500, Meta, Microsoft, Tesla, Google, Apple,</em> and <em>Amazon</em>. This ranking reflects prices as of approximately 12/1/25, when we last retrieved data from the API. This ordering is very similar to what it was ten years ago, with the main exception being <em>Tesla</em>, which rose from near the bottom to become the fourth-highest stock among the seven analyzed. The remaining stocks maintained similar rankings or were very close to one another.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/output.png" class="img-fluid figure-img"></p>
+<figcaption>Close Price All Stocks</figcaption>
+</figure>
+</div>
+<p>The graphs also show a sizable decrease in stock prices from approximately 2022 to 2024. This decline aligns with a period of extremely high inflation driven by post-pandemic supply chain disruptions and strong consumer demand supported by earlier stimulus efforts.</p>
+<p>Comparing stocks based on their percent change over the last ten years, all of them experienced substantial growth, with the lowest increase around 286% and the highest near 2700%. Ordered from highest to lowest growth over the ten-year period, the ranking is <em>Tesla, Apple, Microsoft, Google, Amazon, Meta,</em> and the <em>S&amp;P 500</em>. We were surprised to see that the <em>S&amp;P 500</em> achieved only about half the growth of <em>Meta</em>, the second-lowest stock in this ranking. This result is reasonable, however, since the individual stocks analyzed are primarily technology companies that have experienced significant growth over the past decade, whereas the <em>S&amp;P 500</em> represents a diversified index of the top 500 companies and is generally considered a safer, but still rewarding, investment.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/.png" class="img-fluid figure-img"></p>
+<figcaption>Percent Change All Stocks</figcaption>
+</figure>
+</div>
+</section>
+<section id="summary-tables" class="level3">
+<h3 class="anchored" data-anchor-id="summary-tables"><strong>Summary Tables</strong></h3>
+<p>We included summary tables to display numerical values for percent change, volatility, and the mean weekly percent increase for each stock.</p>
+<p>Volatility measures how unpredictable a stock’s price movements are and provides insight into its risk level. Higher volatility indicates larger and more frequent price changes, while lower volatility suggests greater stability and potentially lower risk for long-term investors. From highest to lowest volatility, the stocks are <em>Amazon, Google, Tesla, Apple, Meta</em>, the <em>S&amp;P 500</em>, and <em>Microsoft</em>. We were surprised that <em>Tesla</em> did not have the highest volatility, since the graphs show large price swings that visually appear very extreme. However, while <em>Tesla’s</em> volatility is still relatively high as the third most volatile stock, its value is around 95, compared to <em>Apple’s</em> volatility of only 18. We were also surprised to see that the <em>S&amp;P 500</em>, often considered the safest long-term investment option, did not have the lowest volatility—<em>Microsoft</em> did. That said, the difference between their volatilities was less than one standard deviation, so they are not drastically different.</p>
+<p>The final statistic we examined was the mean weekly percent increase in a stock’s closing price. This metric provides a long-term view of price trends and momentum while smoothing out some of the short-term “noise” present in the stock market. It helps estimate how much a stock might be expected to increase on an average week. This information can be useful for both short-term and long-term investors. A high average weekly increase may appeal to short- or medium-term investors, even if the stock is more volatile, while also offering reassurance to long-term investors that growth is occurring consistently over time.</p>
+</section>
+</section>
+<section id="modeling" class="level2">
+<h2 class="anchored" data-anchor-id="modeling"><strong>Modeling</strong></h2>
+<p>To Explore more about whether or not historical stock data has predictive information, we decided to fit a liner regression model at each individual stock level. Weekly returns were computed from adjusted closing prices, and the response variable was defined as the next-period return. Two predictors were used: the current-period return and the percent change in trading volume. These features were chosen because they are easily interpretable and commonly used in other financial analysis.</p>
+<p>Models were trained by using a time-based train/test split to preserve the data sctructures and better relflect a forecasting setting. Model performace is evaluated using the standard metrics of R^2 and MSE. Overall, the results indicated that predictive power is limited. Because the market is so volatile. the modeling component now focuses more on EDA and a baseline of demonstrating how statiscal models can be implemented to these data and in the data science pipline.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion"><strong>Conclusion</strong></h2>
+<p>From our analysis, we found that <em>Tesla</em> experienced the largest increase over the past ten years among the seven stocks examined. Surprisingly, the <em>S&amp;P 500</em> did not perform as strongly as expected when compared to major individual stocks such as <em>Tesla, Apple, Microsoft, Google, Meta</em>, and <em>Amazon</em>.</p>
+<p>[Write about modeling]</p>
+<p>This analysis could be improved by using daily stock prices instead of weekly prices; however, we were limited by the amount of data available through the free API. The study could also be expanded by including stocks outside of the <em>S&amp;P 500</em>, or stocks that experienced extreme short-term gains followed by large losses, such as GameStop. Including a wider variety of stocks would provide a broader perspective, allow for deeper insights, and help make the predictive models more generalizable by better capturing market noise and volatility.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

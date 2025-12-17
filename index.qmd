@@ -1,6 +1,16 @@
 ---
 title: "My Python Package!"
+execute:
+  python: ./.venv/bin/python
 ---
+
+```{python}
+#| label: load_package_setup
+#| include: false
+import runpy
+
+runpy.run_path("scripts/quarto_setup.py")
+```
 
 Documentation [here](Documentation.qmd)
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tutorial – My Python Package!</title>
+<title>Tutorial: How to use the stat386stonks Package – My Python Package!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -37,14 +72,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6f6599830d51be977da3b6af758f8eff.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1fe81d0376b2c50856e68e651e390326.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3c87bd97f2d3ed8302ed67633272be33.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-de0ed3b9a49d5daa615839eefb10c6a7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -281,8 +316,31 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#install-the-package" id="toc-install-the-package" class="nav-link active" data-scroll-target="#install-the-package">1. Install the Package</a></li>
+  <li><a href="#api-key-setup-required-for-data-collection" id="toc-api-key-setup-required-for-data-collection" class="nav-link" data-scroll-target="#api-key-setup-required-for-data-collection">2. API Key setup (required for data collection)</a></li>
+  <li><a href="#collecting-stock-data" id="toc-collecting-stock-data" class="nav-link" data-scroll-target="#collecting-stock-data">3. Collecting Stock Data</a></li>
+  <li><a href="#cleaning-and-preparing-the-data" id="toc-cleaning-and-preparing-the-data" class="nav-link" data-scroll-target="#cleaning-and-preparing-the-data">4. Cleaning and Preparing the Data</a>
+  <ul class="collapse">
+  <li><a href="#option-a---in-python" id="toc-option-a---in-python" class="nav-link" data-scroll-target="#option-a---in-python">Option A - In Python</a></li>
+  <li><a href="#option-b---in-bashterminal" id="toc-option-b---in-bashterminal" class="nav-link" data-scroll-target="#option-b---in-bashterminal">Option B - In Bash/Terminal</a></li>
+  </ul></li>
+  <li><a href="#feature-engineering" id="toc-feature-engineering" class="nav-link" data-scroll-target="#feature-engineering">5. Feature Engineering</a></li>
+  <li><a href="#analysis-and-modeling" id="toc-analysis-and-modeling" class="nav-link" data-scroll-target="#analysis-and-modeling">6. Analysis and Modeling</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">7. Visualization</a>
+  <ul class="collapse">
+  <li><a href="#plot-adjusted-closing-prices" id="toc-plot-adjusted-closing-prices" class="nav-link" data-scroll-target="#plot-adjusted-closing-prices">Plot Adjusted Closing Prices</a></li>
+  <li><a href="#plot-percent-change-over-time" id="toc-plot-percent-change-over-time" class="nav-link" data-scroll-target="#plot-percent-change-over-time">Plot percent change over time</a></li>
+  <li><a href="#compare-two-stocks" id="toc-compare-two-stocks" class="nav-link" data-scroll-target="#compare-two-stocks">Compare two stocks</a></li>
+  <li><a href="#new-plot" id="toc-new-plot" class="nav-link" data-scroll-target="#new-plot">New plot</a></li>
+  </ul></li>
+  <li><a href="#streamlit-dashboard" id="toc-streamlit-dashboard" class="nav-link" data-scroll-target="#streamlit-dashboard">8. Streamlit Dashboard</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -290,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tutorial</h1>
+<h1 class="title">Tutorial: How to use the stat386stonks Package</h1>
 </div>
 
 
@@ -307,12 +365,138 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<pre class="{python3}"><code>from src import *
+<section id="install-the-package" class="level2">
+<h2 class="anchored" data-anchor-id="install-the-package">1. Install the Package</h2>
+<p>the package is installable directly from GitHub.</p>
+<pre class="{bash}"><code>#| eval: false
+pip install git+https://github.com/chamiltonb8/final_project.git</code></pre>
+<p>After installing the package confirm that it works</p>
+<div id="76a5faf0" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> stat386stonks</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="api-key-setup-required-for-data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="api-key-setup-required-for-data-collection">2. API Key setup (required for data collection)</h2>
+<ol type="1">
+<li>obtain a free api key from the <a href="https://www.alphavantage.co/documentation/">AlphaVantage Website</a></li>
+<li>create a <code>.env</code> file in your root directory and list it in a <code>.gitignore</code> file. Make sure that the call to the API in the .env file looks like this:</li>
+</ol>
+<div id="c61c86a3" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace "your_key_here with your actual key"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ALPHAVANTAGE_API_KEY<span class="op">=</span>your_key_here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="3" type="1">
+<li>This package automatically adds this key using the python-dotenv library</li>
+</ol>
+</section>
+<section id="collecting-stock-data" class="level2">
+<h2 class="anchored" data-anchor-id="collecting-stock-data">3. Collecting Stock Data</h2>
+<p>All Stock Data is collected using the <code>fetch_weekly_adjusted()</code> function. It’s implementation looks like this:</p>
+<div id="40c59aa2" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the Library and function</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> fetch_weekly_adjusted</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the Symbols you want to use from the list you can edit it to use any ticker that you would like as long as you know the symbol and AlphaVangtage contains it. We'll use those listed in the list object. </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>symbols <span class="op">=</span> [<span class="st">"AAPL"</span>, <span class="st">"MSFT"</span>, <span class="st">"SPY"</span>, <span class="st">"TSLA"</span>, <span class="st">"GOOGL"</span>, <span class="st">"AMZN"</span>, <span class="st">"META"</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataframe that allows you to explore and analyze the stock data</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> fetch_weekly_adjusted(symbols)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>df_raw.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The code above returns a DataFrame containing weekly adjusted stock data for each selected symbol.</p>
+<p>For reproduceability, we recommend that you save the raw data:</p>
+<div id="541d107e" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_raw.to_csv(<span class="st">"data/weekly_5yr_all_symbols.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="cleaning-and-preparing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-and-preparing-the-data">4. Cleaning and Preparing the Data</h2>
+<p>As with all data, the raw data needs cleaning before it can be used. The Package provides a function that makes this step easier than if it was done by hand and allows for two options:</p>
+<section id="option-a---in-python" class="level3">
+<h3 class="anchored" data-anchor-id="option-a---in-python">Option A - In Python</h3>
+<div id="e428bfd0" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> clean_prices</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df_raw <span class="op">=</span> pd.read_csv(<span class="st">"data/weekly_5yr_all_symbols.csv"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> clean_prices(df_raw)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>df_clean.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="option-b---in-bashterminal" class="level3">
+<h3 class="anchored" data-anchor-id="option-b---in-bashterminal">Option B - In Bash/Terminal</h3>
+<pre class="{bash}"><code>#| eval: false
+./.venv/bin/python scripts/clean_prices.py \
+  --infile data/weekly_5yr_all_symbols.csv \
+  --outfile data/clean_weekly_stock_data.csv</code></pre>
+</section>
+</section>
+<section id="feature-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="feature-engineering">5. Feature Engineering</h2>
+<p>The cleaning step creates additional variables automatically that can help in future analysis.</p>
+<ul>
+<li><strong>Close_diff</strong>: Week-to-week change in closing price for each stock.</li>
+<li><strong>Pct_Change</strong>: Percent change in adjusted close price relative to the first observation for each stock.</li>
+</ul>
+<p>These features allow comparisons across stocks and enable volatility and performance analysis.</p>
+</section>
+<section id="analysis-and-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-and-modeling">6. Analysis and Modeling</h2>
+<p>This Package Includes a modeling function to explore simple patterns in the stock data and can potentially aid in predicing future returns.</p>
+<div id="3867fffe" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> fit_next_return_models</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/clean_weekly_stock_data.csv"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> fit_next_return_models(df)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This function fits time-based linear regression models for each stock and returns model coefficients and performance metrics.</p>
+</section>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">7. Visualization</h2>
+<p>The package provides several visualization utilities for exploratory analysis.</p>
+<p>Here is how to implement each one:</p>
+<section id="plot-adjusted-closing-prices" class="level3">
+<h3 class="anchored" data-anchor-id="plot-adjusted-closing-prices">Plot Adjusted Closing Prices</h3>
+<div id="87a5fae1" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> plot_closing_prices</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plot_closing_prices(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="plot-percent-change-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="plot-percent-change-over-time">Plot percent change over time</h3>
+<div id="729f310a" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> plot_all_pct_change</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plot_all_pct_change(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="compare-two-stocks" class="level3">
+<h3 class="anchored" data-anchor-id="compare-two-stocks">Compare two stocks</h3>
+<div id="bd83105b" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stat386stonks <span class="im">import</span> compare_two</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>compare_two(<span class="st">"AAPL"</span>, <span class="st">"SPY"</span>, df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="new-plot" class="level3">
+<h3 class="anchored" data-anchor-id="new-plot">New plot</h3>
+</section>
+</section>
+<section id="streamlit-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="streamlit-dashboard">8. Streamlit Dashboard</h2>
+<p>An interactive Streamlit application is included in the project. The app imports the stat386stonks package to display interactive plots and summary tables. There is also a link to it <a href="">here</a></p>
+<p>To run the app locally:</p>
+<pre class="{bash}"><code>#| eval: false
+streamlit run streamlit_app.py</code></pre>
 
-run_cleaning_pipeline()
-run_analysis_pipeline()</code></pre>
 
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
