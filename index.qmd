@@ -16,14 +16,11 @@ Documentation [here](Documentation.qmd)
 
 Get started [here](Tutorial.qmd)
 
+View the Streamlit App [here](https://stat386stonks.streamlit.app/)
 
 ## Overview
 
 This page documents the main public functions in the `stat386stonks` package, including what each function does, its inputs, and what it returns. These functions are designed to support a reproducible workflow for collecting, cleaning, analyzing, modeling, and visualizing historical stock data.
-
-If you want the Documentation click [here](Documentation.qmd)
-
-If you want the Tutorial click [here](Tutorial.qmd)
 
 > **Note:** Function behavior is described based on the project’s implementation. Where relevant, functions assume standard Alpha Vantage weekly adjusted time series fields (e.g., `open`, `close`, `adjusted close`, `volume`) and the cleaned dataset produced by `clean_prices()`.
 

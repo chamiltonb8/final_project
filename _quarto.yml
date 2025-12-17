@@ -8,15 +8,13 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: tutorial.qmd
+      - href: Tutorial.qmd
         text: Tutorial
-      - href: documentation.qmd
+      - href: Documentation.qmd
         text: Documentation
-      - href: reference.qmd
-        text: API Reference
 
 format:
   html:
     theme: cosmo
-    css: style.css
+    css: styles.css
     toc: true

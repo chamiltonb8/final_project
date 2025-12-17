@@ -1,0 +1,77 @@
+:root {
+  --brand-primary: #0366d6;
+  --brand-dark: #24292e;
+  --brand-light: #f6f8fa;
+  --brand-accent: #2da44e;
+}
+
+body {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--brand-light);
+  color: var(--brand-dark);
+  line-height: 1.6;
+}
+
+.navbar,
+.navbar-dark {
+  background-color: var(--brand-dark) !important;
+}
+
+.navbar-nav .nav-link,
+.navbar-brand {
+  color: var(--brand-light) !important;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  color: var(--brand-primary) !important;
+}
+
+main.content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(36, 41, 46, 0.08);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+pre code {
+  background-color: #0d1117;
+  color: #e1e4e8;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+code {
+  background-color: rgba(3, 102, 214, 0.12);
+  color: #0d1117;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.4rem;
+}
+
+.btn-primary {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #024ea1;
+  border-color: #024ea1;
+}
+
+a {
+  color: var(--brand-primary);
+}
+
+a:hover,
+a:focus {
+  color: #024ea1;
+  text-decoration: none;
+}
+
+footer {
+  color: rgba(255, 255, 255, 0.7);
+}
