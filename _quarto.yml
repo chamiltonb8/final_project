@@ -4,6 +4,7 @@ project:
 
 website:
   title: "stat386stonks"
+  site-url: "https://chamiltonb8.github.io/final_project/"
   navbar:
     left:
       - href: index.qmd
