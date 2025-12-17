@@ -1,8 +1,12 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent / "src"))
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
 from stat386stonks import clean_prices, fit_next_return_models
+
 
 st.set_page_config(page_title="Stock Dashboard", layout="wide")
 st.title("📊 Stock Dashboard")
