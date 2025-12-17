@@ -1,9 +1,20 @@
 ---
-title: "Documentation"
+title: "Documentation for the stat386stonks package"
 jupyter: python3
 ---
 
-Here is how you use my package
+## Overview
+Here is the information for the stat386stonks package. This package implements a complete data science for analyzing historical stock market data using an Alpha Vantage API. The core functionality is packaged as a reusable python library, 'stat386stonks', which is used by both scripts and a Streamlit application. 
+
+## Data Source
+
+The data was collected from Alpha Vantage service using an API key to aquire the Weekly Ajusted Time Series endpoint. The data includes open, high, low, close, adjusted close, volume, and dividend variables. Accessing the API requires a free API key, which is stored locally. 
+
+To access this API key, you'll need to visit the [Alpha Vantage Website](https://www.alphavantage.co/documentation/) 
+
+## Data Cleaning & Feature Engineering 
+
+
 
 ```{python3}
 
