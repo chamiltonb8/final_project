@@ -24,11 +24,10 @@ Some of the data cleaning took place as we combined the 2 csv files. We had to c
 ### Plotting
 Comparing the different adjusted closing prices, in order from highest to lowest from the stocks we analyzed, are S&P 500, META, Microsoft, Tesla, Google, Apple, and then Amazon. This is the current ranking from about 12/1/25 whe we lost got data from the API. This is very similar to what the ranking was 10 years ago, except that Tesla rose from the bottom in adjusted close price to become the 4th out of the 7 stocks we looked at. The rest of the stocks had similar rankings or where very close to the other stocks. Looking at the graph there is also a very sizable decrease in all of the stock prices from about 2022-2024. There was extremely high inflation during this time due to the post-pandemic supply chain issues and strong consumer demand supported by earlier stimulus efforts resulting in that decrease from 2022-2024 for all of the stocks we looked at.
 
-Percent change:
+Comparing the stocks based off their percent change from 10 years ago to now, they've all grown considerable amounts, with the lowest one being 286% and the highest being 2700%. In order from highest to lowest growth in the last 10 years: Tesla, Apple, Microsoft, Google, Amazon, Meta, and the S&P 500. We were suprised to see that the S&P 500 had only about **1/2** of the growth that the 2nd to last stock, Meta, had. This makes sense though as these stocks are all involved with technology which has had immense growth in the last 10 years while the S&P 500 is the consolidation of rhte top 500 stocks making it a safer, but still rewarding stock. 
 
 ### Summary Tables
-Performance:
-
+We added a summary table for percent change to see numerically what the exact numbers were for the percent increase in stock was as well as the volatility of each stock and the mean weekly difference of each stock. 
 Volatility:
 
 Mean Weekly Difference:
