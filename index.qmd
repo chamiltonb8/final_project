@@ -2,8 +2,251 @@
 title: "My Python Package!"
 ---
 
-Here is a website all about my package.
-
 Documentation [here](Documentation.qmd)
 
 Get started [here](Tutorial.qmd)
+
+
+## Overview
+
+This page documents the main public functions in the `stat386stonks` package, including what each function does, its inputs, and what it returns. These functions are designed to support a reproducible workflow for collecting, cleaning, analyzing, modeling, and visualizing historical stock data.
+
+If you want the Documentation click [here](Documentation.qmd)
+
+If you want the Tutorial click [here](Tutorial.qmd)
+
+> **Note:** Function behavior is described based on the project’s implementation. Where relevant, functions assume standard Alpha Vantage weekly adjusted time series fields (e.g., `open`, `close`, `adjusted close`, `volume`) and the cleaned dataset produced by `clean_prices()`.
+
+---
+
+## Data Collection
+
+### `fetch_weekly_adjusted(symbols)`
+
+**Purpose**  
+Downloads weekly adjusted time series data for a list of stock ticker symbols from the Alpha Vantage API and returns a single combined DataFrame.
+
+**Where it lives**  
+`stat386stonks.read_data`
+
+**Inputs**
+- `symbols` *(list[str])*: A list of ticker symbols (e.g., `["AAPL", "MSFT", "SPY"]`).
+
+**What it does**
+- Loads your Alpha Vantage API key from the environment (`ALPHAVANTAGE_API_KEY`), typically via a local `.env` file.
+- Calls the Alpha Vantage weekly adjusted endpoint for each symbol.
+- Builds a DataFrame for each symbol and concatenates results into one DataFrame (with a `Symbol` column).
+- Converts the date field to a proper datetime column and sorts by date.
+
+**Returns**
+- *(pandas.DataFrame)*: Weekly stock data for all requested symbols, including a `Symbol` column and a `Date` column.
+
+**Example**
+```python
+from stat386stonks import fetch_weekly_adjusted
+
+symbols = ["AAPL", "MSFT", "SPY"]
+df_raw = fetch_weekly_adjusted(symbols)
+df_raw.head()
+```
+
+---
+
+## Cleaning and Feature Engineering
+
+### `clean_prices(df)`
+
+**Purpose**  
+Cleans raw Alpha Vantage output and creates engineered features used throughout the project.
+
+**Where it lives**  
+`stat386stonks.clean_data`
+
+**Inputs**
+- `df` *(pandas.DataFrame)*: Raw (or semi-raw) stock data. Typically created by `fetch_weekly_adjusted()` or read from a CSV export.
+
+**What it does**
+- Standardizes column names (e.g., removes numeric prefixes like `1. open` → `open`).
+- Converts numeric columns to numeric types (prices, volume, dividend amount, etc.).
+- Ensures `Date` is parsed as datetime and the data is sorted by `Symbol` and `Date`.
+- Creates engineered features:
+  - `Close_diff`: week-to-week difference in `close` (within each `Symbol`)
+  - `Pct_Change`: percent change in `adjusted close` relative to the first observation (within each `Symbol`)
+
+**Returns**
+- *(pandas.DataFrame)*: A cleaned DataFrame with engineered features included.
+
+**Example**
+```python
+import pandas as pd
+from stat386stonks import clean_prices
+
+df_raw = pd.read_csv("data/weekly_5yr_all_symbols.csv")
+df_clean = clean_prices(df_raw)
+df_clean[["Symbol", "Date", "close", "Close_diff", "Pct_Change"]].head()
+```
+
+---
+
+## Modeling
+
+### `fit_next_return_models(df)`
+
+**Purpose**  
+Fits per-stock linear regression models to predict next-period returns using simple signals from the current period.
+
+**Where it lives**  
+`stat386stonks.models`
+
+**Inputs**
+- `df` *(pandas.DataFrame)*: Cleaned stock data (ideally produced by `clean_prices()`), containing at least:
+  - `Symbol`
+  - `Date`
+  - `adjusted close`
+  - `volume`
+
+**What it does**
+- For each `Symbol`, computes:
+  - `ret`: percent change of `adjusted close`
+  - `next_ret`: `ret` shifted by -1 (the next period’s return)
+  - `vol_change`: percent change of `volume`
+- Fits a **time-based train/test split** (no shuffling) to better reflect a forecasting scenario.
+- Trains a linear regression model:
+  - **Target:** `next_ret`
+  - **Features:** `ret` and `vol_change`
+- Computes evaluation metrics such as:
+  - R²
+  - Mean Squared Error (MSE)
+- Returns a compact summary table across symbols.
+
+**Returns**
+- *(pandas.DataFrame)*: One row per symbol, typically including coefficients and metrics (e.g., `coef_ret`, `coef_vol_change`, `intercept`, `r2`, `mse`, `n_obs`).
+
+**Example**
+```python
+import pandas as pd
+from stat386stonks import fit_next_return_models
+
+df = pd.read_csv("data/clean_weekly_stock_data.csv")
+results = fit_next_return_models(df)
+results
+```
+
+---
+
+## Visualization
+
+### `plot_closing_prices(df)`
+
+**Purpose**  
+Plots adjusted closing prices over time for each stock symbol in the dataset.
+
+**Where it lives**  
+`stat386stonks.plots`
+
+**Inputs**
+- `df` *(pandas.DataFrame)*: Cleaned or raw stock data containing:
+  - `Symbol`
+  - `Date`
+  - `adjusted close`
+
+**What it does**
+- Iterates over each symbol and produces a time-series line plot of `adjusted close` vs `Date`.
+
+**Returns**
+- None (displays plots).
+
+**Example**
+```python
+import pandas as pd
+from stat386stonks import plot_closing_prices
+
+df = pd.read_csv("data/clean_weekly_stock_data.csv")
+plot_closing_prices(df)
+```
+
+---
+
+### `plot_all_pct_change(df)`
+
+**Purpose**  
+Plots the percent change (`Pct_Change`) for all symbols on a single chart for easy comparison.
+
+**Where it lives**  
+`stat386stonks.plots`
+
+**Inputs**
+- `df` *(pandas.DataFrame)*: Cleaned stock data containing:
+  - `Symbol`
+  - `Date`
+  - `Pct_Change`
+
+**What it does**
+- Plots each symbol’s `Pct_Change` vs `Date` on the same set of axes.
+- Useful for comparing growth trajectories across multiple stocks.
+
+**Returns**
+- None (displays plot).
+
+**Example**
+```python
+import pandas as pd
+from stat386stonks import plot_all_pct_change
+
+df = pd.read_csv("data/clean_weekly_stock_data.csv")
+plot_all_pct_change(df)
+```
+
+---
+
+### `compare_two(stock1, stock2, df)`
+
+**Purpose**  
+Creates side-by-side style comparison plots for two stocks:
+1) adjusted close over time  
+2) percent change over time
+
+**Where it lives**  
+`stat386stonks.plots`
+
+**Inputs**
+- `stock1` *(str)*: First ticker symbol (e.g., `"AAPL"`).
+- `stock2` *(str)*: Second ticker symbol (e.g., `"SPY"`).
+- `df` *(pandas.DataFrame)*: Cleaned stock data containing:
+  - `Symbol`
+  - `Date`
+  - `adjusted close`
+  - `Pct_Change`
+
+**What it does**
+- Filters the dataset to the two requested symbols.
+- Plots:
+  - `adjusted close` vs `Date` for both stocks
+  - `Pct_Change` vs `Date` for both stocks
+
+**Returns**
+- None (displays plots).
+
+**Example**
+```python
+import pandas as pd
+from stat386stonks import compare_two
+
+df = pd.read_csv("data/clean_weekly_stock_data.csv")
+compare_two("AAPL", "SPY", df)
+```
+
+---
+
+## Notes for Streamlit Integration
+
+The Streamlit dashboard can import these functions directly:
+
+```python
+from stat386stonks import clean_prices, fit_next_return_models
+```
+
+For interactive apps, it is common to:
+- load the cleaned CSV (fast)
+- cache the DataFrame in Streamlit (`@st.cache_data`)
+- compute summary tables using groupby operations (performance/volatility)
