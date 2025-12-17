@@ -25,7 +25,7 @@ tickers = st.sidebar.multiselect(
 
 metric = st.sidebar.radio(
     "Metric",
-    ["Adjusted Close", "Pct_Change"]
+    ["Adjusted Close", "% Change"]
 )
 
 # Slider for number of top stocks in tables

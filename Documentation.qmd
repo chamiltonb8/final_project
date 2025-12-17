@@ -3,6 +3,8 @@ title: "Documentation for the stat386stonks package"
 jupyter: python3
 ---
 
+# Analyzing and Forecasting the Stock Market
+Here is how you use my package
 ## Overview
 Here is the information for the stat386stonks package. This package implements a complete data science for analyzing historical stock market data using an Alpha Vantage API. The core functionality is packaged as a reusable python library, 'stat386stonks', which is used by both scripts and a Streamlit application. 
 
@@ -20,3 +22,29 @@ To access this API key, you'll need to visit the [Alpha Vantage Website](https:/
 
 
 ```
+
+## Introduction
+We created this package so that people could analyze historical data from some of the most well known stocks, compare them to each other, and use models to predict what the stock prices may be. Predicting the stock market is something that is a dream to almost everyone in the stock market. Knowing the future will help them to make immense profits. Although the predictive models that we added won't give exact predictions and are wrong, they allow us to have an insight in what the future stock prices may be based off historical data. We want to disclose that these models aren't perfect and one shouldn't carelessly invest in the stocks included in our package solely based off of our model.
+
+## Getting the Data
+The dataset is from the Alpha Vantage API, which provides publicly accessible financial market data, including historical and real-time prices for stocks, ETFs, cryptocurrencies, and forex. We will only be using the historical prices for stocks. It includes key information such as open, high, low, close prices, trading volume, and adjusted close values for equities, along with metadata like the ticker symbol, time interval, and last refreshed date. The data can be accessed through the API and allows us to group the data by daily, weekly, or monthly. Getting the API just requires making a free account with Alpha Vantage API and the data collection is legal as long as it isn't used for commercial use and respect rate limits. Using the free API has its limits so we had to use our code to read the API data in for 5 years for 7 stocks and make a csv file and then later edit the code to get the next 5 years of data saved to a seperate csv file. We then combined those 2 csv files to create our df which we then used to clean our data. We also only got data per week instead of per day in order to get as much data as we could within the free limits of the API while still getting the necessary data. 
+
+### Cleaning the Data
+Some of the data cleaning took place as we combined the 2 csv files. We had to clean the column names as they all had numbers in front of them, but we just wanted the names and all of them to be capitalized. We also made sure the data was sorted by symbol first and then date so that we could graph our data as as timeseries. Without this step, the graphs and analysis would not be accurate. We added 2 new columns to our data using the data provided from the API keys. We created *"Close_diff"* which would gropu the data by each stock and give us the difference in adjusted closing price from the current day and the previous day. The adjusted closing price accounted for stocks splitting, which was the case for a few of the stocks where they'll increase the shares of the investors but make the price a fraction of what it used to be. The second variable we made was *"Pct_Change"* which grouped by each stock and then used the adjusted close price to see the percent change in relation to the first data point for that variable. This would allow us to compare stocks better than just looking at pricing, as the percent increase is what investors look for rather than just the raw price of the stock.
+
+## Analysis
+### Plotting
+Comparing the different adjusted closing prices, in order from highest to lowest from the stocks we analyzed, are S&P 500, META, Microsoft, Tesla, Google, Apple, and then Amazon. This is the current ranking from about 12/1/25 whe we lost got data from the API. This is very similar to what the ranking was 10 years ago, except that Tesla rose from the bottom in adjusted close price to become the 4th out of the 7 stocks we looked at. The rest of the stocks had similar rankings or where very close to the other stocks. Looking at the graph there is also a very sizable decrease in all of the stock prices from about 2022-2024. There was extremely high inflation during this time due to the post-pandemic supply chain issues and strong consumer demand supported by earlier stimulus efforts resulting in that decrease from 2022-2024 for all of the stocks we looked at.
+
+Comparing the stocks based off their percent change from 10 years ago to now, they've all grown considerable amounts, with the lowest one being 286% and the highest being 2700%. In order from highest to lowest growth in the last 10 years: Tesla, Apple, Microsoft, Google, Amazon, Meta, and the S&P 500. We were suprised to see that the S&P 500 had only about **1/2** of the growth that the 2nd to last stock, Meta, had. This makes sense though as these stocks are all involved with technology which has had immense growth in the last 10 years while the S&P 500 is the consolidation of rhte top 500 stocks making it a safer, but still rewarding stock. 
+
+### Summary Tables
+We added a summary table for percent change to see numerically what the exact numbers were for the percent increase in stock was as well as the volatility of each stock and the mean weekly difference of each stock. 
+Volatility:
+
+Mean Weekly Difference:
+
+## Modeling
+
+## Conclusion
+Things to improve: We had limits to the data since we had to API
