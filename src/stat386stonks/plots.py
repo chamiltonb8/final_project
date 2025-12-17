@@ -1,22 +1,47 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def plot_closing_prices(df: pd.DataFrame):
+def plot_all_closing_prices(df: pd.DataFrame, symbols=None):
     df = df.copy()
     df["Date"] = pd.to_datetime(df["Date"])
 
-    for sym in df["Symbol"].unique():
+    if symbols is None:
+        symbols = df["Symbol"].unique()
+
+    plt.figure(figsize=(12, 6))
+    for sym in symbols:
         sub = df[df["Symbol"] == sym].sort_values("Date")
+        plt.plot(sub["Date"], sub["adjusted close"], label=sym)
+
+    plt.title("Adjusted Close Prices (All Stocks)")
+    plt.xlabel("Date")
+    plt.ylabel("Adjusted Close")
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+def plot_closing_prices(df: pd.DataFrame, symbols=None):
+    df = df.copy()
+    df["Date"] = pd.to_datetime(df["Date"])
+
+    if symbols is None:
+        symbols = df["Symbol"].unique()
+
+    for sym in symbols:
+        sub = df[df["Symbol"] == sym].sort_values("Date")
+
         plt.figure(figsize=(10, 4))
         plt.plot(sub["Date"], sub["adjusted close"])
         plt.title(f"Adjusted Close Over Time: {sym}")
+        plt.xlabel("Date")
         plt.ylabel("Adjusted Close")
         plt.tight_layout()
         plt.show()
-
+        
 def plot_all_pct_change(df: pd.DataFrame, symbols=None):
     df = df.copy()
     df["Date"] = pd.to_datetime(df["Date"])
+
     if symbols is None:
         symbols = df["Symbol"].unique()
 
@@ -25,11 +50,30 @@ def plot_all_pct_change(df: pd.DataFrame, symbols=None):
         sub = df[df["Symbol"] == sym].sort_values("Date")
         plt.plot(sub["Date"], sub["Pct_Change"], label=sym)
 
-    plt.title("Percent Change (from first date)")
-    plt.ylabel("Pct Change")
+    plt.title("Percent Change Over Time (All Stocks)")
+    plt.xlabel("Date")
+    plt.ylabel("Percent Change")
     plt.legend()
     plt.tight_layout()
     plt.show()
+
+def plot_pct_change_individual(df: pd.DataFrame, symbols=None):
+    df = df.copy()
+    df["Date"] = pd.to_datetime(df["Date"])
+
+    if symbols is None:
+        symbols = df["Symbol"].unique()
+
+    for sym in symbols:
+        sub = df[df["Symbol"] == sym].sort_values("Date")
+
+        plt.figure(figsize=(10, 4))
+        plt.plot(sub["Date"], sub["Pct_Change"])
+        plt.title(f"Percent Change Over Time: {sym}")
+        plt.xlabel("Date")
+        plt.ylabel("Percent Change")
+        plt.tight_layout()
+        plt.show()
 
 def compare_two(symbol1: str, symbol2: str, df: pd.DataFrame):
     df = df.copy()
