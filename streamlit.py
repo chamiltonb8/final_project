@@ -2,17 +2,20 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from stat386stonks import clean_prices, fit_next_return_models
+
 st.set_page_config(page_title="Stock Dashboard", layout="wide")
 st.title("📊 Stock Dashboard")
 
-# Load data
 @st.cache_data
-def load_data():
-    df = pd.read_csv("data/clean_weekly_stock_data.csv")
-    df['Date'] = pd.to_datetime(df['Date'])
+def load_and_clean_data():
+    # Use raw input -> clean via package (best demonstration)
+    df_raw = pd.read_csv("data/weekly_5yr_all_symbols.csv")
+    df = clean_prices(df_raw)
+    df["Date"] = pd.to_datetime(df["Date"])
     return df
 
-df = load_data()
+df = load_and_clean_data()
 
 # Sidebar controls
 st.sidebar.header("Controls")
@@ -20,7 +23,7 @@ st.sidebar.header("Controls")
 tickers = st.sidebar.multiselect(
     "Select stocks",
     sorted(df["Symbol"].unique()),
-    default=[df["Symbol"].unique()[0]]
+    default=[sorted(df["Symbol"].unique())[0]]
 )
 
 metric = st.sidebar.radio(
@@ -28,12 +31,17 @@ metric = st.sidebar.radio(
     ["Adjusted Close", "% Change"]
 )
 
-# Slider for number of top stocks in tables
 top_n = st.sidebar.slider("Number of Stocks to Display in Table", 1, 7, 5)
 
-# Dropdown to select which summary table to show
-table_options = ["Performance", "Volatility", "Mean Weekly Diff"]
+table_options = ["Performance", "Volatility", "Mean Weekly % Increase"]
 selected_table = st.sidebar.selectbox("Select Table to View", table_options)
+
+# Optional: run models on demand
+if st.sidebar.button("Run Return Models"):
+    with st.spinner("Fitting models..."):
+        results = fit_next_return_models(df)
+    st.subheader("📉 Model Results (Next-Period Return Prediction)")
+    st.dataframe(results)
 
 # Filter data for selected stocks
 df_filtered = df[df["Symbol"].isin(tickers)]
@@ -52,33 +60,25 @@ if tickers:
             ylabel = "% Change"
     ax.legend()
 else:
-    ylabel = ""  # show empty plot
+    ylabel = ""
 
 ax.set_xlabel("Date")
 ax.set_ylabel(ylabel)
 plt.xticks(rotation=45)
 st.pyplot(fig)
 
-# Ensure correct ordering
+# Summary stats (built from engineered features created by clean_prices)
 df = df.sort_values(["Symbol", "Date"])
+df["Weekly_Pct_Increase"] = df.groupby("Symbol")["adjusted close"].pct_change()
 
-# Derived weekly % increase from adjusted close
-df["Weekly_Pct_Increase"] = (
-    df.groupby("Symbol")["adjusted close"]
-      .pct_change()
-)
+performance = df.groupby("Symbol")["Pct_Change"].last().sort_values(ascending=False)
+volatility = df.groupby("Symbol")["Close_diff"].std().sort_values(ascending=False)
+avg_weekly_pct = df.groupby("Symbol")["Weekly_Pct_Increase"].mean().sort_values(ascending=False)
 
-# Compute summary statistics
-performance = df.groupby('Symbol')['Pct_Change'].last().sort_values(ascending=False)
-volatility = df.groupby('Symbol')['Close_diff'].std().sort_values(ascending=False)
-avg_weekly_pct = df.groupby('Symbol')['Weekly_Pct_Increase'].mean().sort_values(ascending=False)
-
-# Apply top_n filter
 performance_top = performance.head(top_n)
 volatility_top = volatility.head(top_n)
 avg_weekly_pct_top = avg_weekly_pct.head(top_n)
 
-# Show selected table
 st.header("📈 Stock Summary Table")
 if selected_table == "Performance":
     st.dataframe(performance_top.rename("Most Recent % Change"))

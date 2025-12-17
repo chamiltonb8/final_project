@@ -6,3 +6,4 @@ requests>=2.31
 python-dotenv>=1.0
 scikit-learn>=1.4
 setuptools>=68.0
+stat386stonks @ git+https://github.com/chamiltonb8/final_project.git
