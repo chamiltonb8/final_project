@@ -65,63 +65,63 @@
   {
     "objectID": "Tutorial.html",
     "href": "Tutorial.html",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "",
     "text": "the package is installable directly from GitHub.\n#| eval: false\npip install git+https://github.com/chamiltonb8/final_project.git\nAfter installing the package confirm that it works\n\nimport stat386stonks"
   },
   {
     "objectID": "Tutorial.html#install-the-package",
     "href": "Tutorial.html#install-the-package",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "",
     "text": "the package is installable directly from GitHub.\n#| eval: false\npip install git+https://github.com/chamiltonb8/final_project.git\nAfter installing the package confirm that it works\n\nimport stat386stonks"
   },
   {
     "objectID": "Tutorial.html#api-key-setup-required-for-data-collection",
     "href": "Tutorial.html#api-key-setup-required-for-data-collection",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "2. API Key setup (required for data collection)",
-    "text": "2. API Key setup (required for data collection)\n\nobtain a free api key from the AlphaVantage Website\ncreate a .env file in your root directory and list it in a .gitignore file. Make sure that the call to the API in the .env file looks like this:\n\n\n# Replace \"your_key_here with your actual key\"\nALPHAVANTAGE_API_KEY=your_key_here\n\n\nThis package automatically adds this key using the python-dotenv library"
+    "text": "2. API Key setup (required for data collection)\n\nobtain a free api key from the AlphaVantage Website\ncreate a .env file in your root directory and list it in a .gitignore file. Make sure that the call to the API in the .env file looks like this: ALPHAVANTAGE_API_KEY=your_key_here (just make sure to replace “your_key_here” with the key you obtain)\nThis package automatically adds this key using the python-dotenv library"
   },
   {
     "objectID": "Tutorial.html#collecting-stock-data",
     "href": "Tutorial.html#collecting-stock-data",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "3. Collecting Stock Data",
     "text": "3. Collecting Stock Data\nAll Stock Data is collected using the fetch_weekly_adjusted() function. It’s implementation looks like this:\n\n# Import the Library and function\nfrom stat386stonks import fetch_weekly_adjusted\n\n# Select the Symbols you want to use from the list you can edit it to use any ticker that you would like as long as you know the symbol and AlphaVangtage contains it. We'll use those listed in the list object. \nsymbols = [\"AAPL\", \"MSFT\", \"SPY\", \"TSLA\", \"GOOGL\", \"AMZN\", \"META\"]\n\n# Create a new dataframe that allows you to explore and analyze the stock data\ndf_raw = fetch_weekly_adjusted(symbols)\n\ndf_raw.head()\n\nThe code above returns a DataFrame containing weekly adjusted stock data for each selected symbol.\nFor reproduceability, we recommend that you save the raw data:\n\ndf_raw.to_csv(\"data/weekly_5yr_all_symbols.csv\", index=False)"
   },
   {
     "objectID": "Tutorial.html#cleaning-and-preparing-the-data",
     "href": "Tutorial.html#cleaning-and-preparing-the-data",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "4. Cleaning and Preparing the Data",
     "text": "4. Cleaning and Preparing the Data\nAs with all data, the raw data needs cleaning before it can be used. The Package provides a function that makes this step easier than if it was done by hand and allows for two options:\n\nOption A - In Python\n\nimport pandas as pd\nfrom stat386stonks import clean_prices\n\ndf_raw = pd.read_csv(\"data/weekly_5yr_all_symbols.csv\")\ndf_clean = clean_prices(df_raw)\n\ndf_clean.head()\n\n\n\nOption B - In Bash/Terminal\n#| eval: false\n./.venv/bin/python scripts/clean_prices.py \\\n  --infile data/weekly_5yr_all_symbols.csv \\\n  --outfile data/clean_weekly_stock_data.csv"
   },
   {
     "objectID": "Tutorial.html#feature-engineering",
     "href": "Tutorial.html#feature-engineering",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "5. Feature Engineering",
     "text": "5. Feature Engineering\nThe cleaning step creates additional variables automatically that can help in future analysis.\n\nClose_diff: Week-to-week change in closing price for each stock.\nPct_Change: Percent change in adjusted close price relative to the first observation for each stock.\n\nThese features allow comparisons across stocks and enable volatility and performance analysis."
   },
   {
     "objectID": "Tutorial.html#analysis-and-modeling",
     "href": "Tutorial.html#analysis-and-modeling",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "6. Analysis and Modeling",
     "text": "6. Analysis and Modeling\nThis Package Includes a modeling function to explore simple patterns in the stock data and can potentially aid in predicing future returns.\n\nimport pandas as pd\nfrom stat386stonks import fit_next_return_models\n\ndf = pd.read_csv(\"data/clean_weekly_stock_data.csv\")\nresults = fit_next_return_models(df)\n\nresults\n\nThis function fits time-based linear regression models for each stock and returns model coefficients and performance metrics."
   },
   {
     "objectID": "Tutorial.html#visualization",
     "href": "Tutorial.html#visualization",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "7. Visualization",
     "text": "7. Visualization\nThe package provides several visualization utilities for exploratory analysis.\nHere is how to implement each one:\n\nPlot Adjusted Closing Prices\n\nfrom stat386stonks import plot_closing_prices\n\nplot_closing_prices(df)\n\n\n\nPlot percent change over time\n\nfrom stat386stonks import plot_all_pct_change\n\nplot_all_pct_change(df)\n\n\n\nCompare two stocks\n\nfrom stat386stonks import compare_two\n\ncompare_two(\"AAPL\", \"SPY\", df)\n\n\n\nNew plot"
   },
   {
     "objectID": "Tutorial.html#streamlit-dashboard",
     "href": "Tutorial.html#streamlit-dashboard",
-    "title": "Tutorial: How to use the stat386stonks Package",
+    "title": "Tutorial",
     "section": "8. Streamlit Dashboard",
     "text": "8. Streamlit Dashboard\nAn interactive Streamlit application is included in the project. The app imports the stat386stonks package to display interactive plots and summary tables. There is also a link to it here\nTo run the app locally:\n#| eval: false\nstreamlit run streamlit_app.py"
   },

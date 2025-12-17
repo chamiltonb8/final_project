@@ -7,3 +7,4 @@ python-dotenv>=1.0
 scikit-learn>=1.4
 setuptools>=68.0
 streamlit
+pyyaml>=6.0

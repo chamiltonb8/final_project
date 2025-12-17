@@ -1,6 +1,5 @@
 ---
 title: "Documentation for the stat386stonks package"
-jupyter: python3
 execute:
   python: ./.venv/bin/python
 ---

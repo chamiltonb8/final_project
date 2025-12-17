@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: How to use the stat386stonks Package"
+title: "Tutorial"
 engine: python
 execute:
   python: ./.venv/bin/python
@@ -31,13 +31,8 @@ import stat386stonks
 ## 2. API Key setup (required for data collection)
 
 1. obtain a free api key from the [AlphaVantage Website](https://www.alphavantage.co/documentation/)
-2. create a `.env` file in your root directory and list it in a `.gitignore` file. Make sure that the call to the API in the .env file looks like this:
+2. create a `.env` file in your root directory and list it in a `.gitignore` file. Make sure that the call to the API in the .env file looks like this: ALPHAVANTAGE_API_KEY=your_key_here (just make sure to replace "your_key_here" with the key you obtain)
 
-```{python}
-#| eval: false
-# Replace "your_key_here with your actual key"
-ALPHAVANTAGE_API_KEY=your_key_here
-```
 
 3. This package automatically adds this key using the python-dotenv library
 
