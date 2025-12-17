@@ -3,84 +3,6 @@ title: "Documentation for the stat386stonks package"
 jupyter: python3
 ---
 
-# **Analyzing and Forecasting the Stock Market**
-Here is how you use my package
-## Overview
-Here is the information for the stat386stonks package. This package implements a complete data science for analyzing historical stock market data using an Alpha Vantage API. The core functionality is packaged as a reusable python library, 'stat386stonks', which is used by both scripts and a Streamlit application. 
-
-## Data Source
-
-The data was collected from Alpha Vantage service using an API key to aquire the Weekly Ajusted Time Series endpoint. The data includes open, high, low, close, adjusted close, volume, and dividend variables. Accessing the API requires a free API key, which is stored locally. 
-
-To access this API key, you'll need to visit the [Alpha Vantage Website](https://www.alphavantage.co/documentation/) 
-
-## Data Cleaning & Feature Engineering 
-
----
-title: "Documentation for the stat386stonks package"
-jupyter: python3
----
-
-## Overview
-
-Here is the information for the stat386stonks package. This package implements a complete data science for analyzing historical stock market data using an Alpha Vantage API. The core functionality is packaged as a reusable python library, `stat386stonks`, which is used by both scripts and a Streamlit application. This package is designed to give stock information for those who want to know a bit more about the stock market and run simple analysis on that as well.  
-
-## Installing the Package
-
-In order to use this package, it needs to be installed. Below is how to do that in bash (terminal)
-
-```{bash}
-# Enter this into your terminal and it will load in the package. 
-pip install git+https://github.com/chamiltonb8/final_project.git
-```
-
-Once the package has been installed, it can be imported into Python
-
-```{python}
-import stat386stonks
-```
-
-## Data Source
-
-A very important part of this package is having access to the correct data. To access the data collected from the Alpha Vantage website using an API key to aquire the Weekly Ajusted Time Series data. The data includes open, high, low, close, adjusted close, volume, and dividend variables. Accessing the API requires a free API key, which is stored locally. 
-
-To access this API key, you'll need to visit the [Alpha Vantage Website](https://www.alphavantage.co/documentation/). Once you've obtained the API key and placed it in a `.env` file and added that file to a `.gitignore` file, you should be able to continue with data collection and using the library.
-
-When you've obtained your API key place it in your `.env` file like this (just make sure to replace "your_key_here" with the key you obtained):
-
-```{python}
-ALPHAVANTAGE_API_KEY = your_key_here
-```
-
-## Data Collection
-
-All of the data collection is taken care of in the `read_data` module of the `stat386stonks` package. The functions in this module retrieve the weekly data for the Apple, Microsoft, Tesla, Google, Amazon, Meta and the S&P 500. It will also return the results into a single Pandas DataFrame. Below is an example of how this works. 
-
-
-```{python}
-# Import the library and specific function used in data collection
-from stat386stonks import fetch_weekly_adjusted 
-
-# Specify the symbols you would like to use from the selected list. In this example we'll select all of them.
-symbols = ["AAPL", "MSFT", "SPY", "TSLA", "GOOGL", "AMZN", "META"]
-
-# Create a new dataframe using the function as demostrated
-df_raw = fetch_weekly_adjusted(symbols)
-
-# Save raw data (optional, recommended for reproducibility)
-df_raw.to_csv("data/weekly_5yr_all_symbols.csv", index=False)
-print(df_raw.head())
-
-```
-
-
-
-
-```{python3}
-
-
-```
-
 ## **Introduction**
 We created this package so that people can analyze historical data from some of the most well-known stocks, compare them to each other, and use models to predict what stock prices may be in the future. Predicting the stock market is a dream for almost everyone involved in investing. Knowing the future would allow investors to make immense profits. Although the predictive models we added do not give exact predictions and can be wrong, they provide insight into what future stock prices may look like based on historical data. We want to disclose that these models are not perfect, and one should not carelessly invest in the stocks included in our package solely based on our models.
 
@@ -117,6 +39,10 @@ Volatility measures how unpredictable a stock’s price movements are and provid
 The final statistic we examined was the mean weekly percent increase in a stock’s closing price. This metric provides a long-term view of price trends and momentum while smoothing out some of the short-term “noise” present in the stock market. It helps estimate how much a stock might be expected to increase on an average week. This information can be useful for both short-term and long-term investors. A high average weekly increase may appeal to short- or medium-term investors, even if the stock is more volatile, while also offering reassurance to long-term investors that growth is occurring consistently over time.
 
 ## **Modeling**
+
+To Explore more about whether or not historical stock data has predictive information, we decided to fit a liner regression model at each individual stock level. Weekly returns were computed from adjusted closing prices, and the response variable was defined as the next-period return. Two predictors were used: the current-period return and the percent change in trading volume. These features were chosen because they are easily interpretable and commonly used in other financial analysis. 
+
+Models were trained by using a time-based train/test split to preserve the data sctructures and better relflect a forecasting setting. Model performace is evaluated using the standard metrics of R^2 and MSE. Overall, the results indicated that predictive power is limited. Because the market is so volatile. the modeling component now focuses more on EDA and a baseline of demonstrating how statiscal models can be implemented to these data and in the data science pipline. 
 
 ## **Conclusion**
 
